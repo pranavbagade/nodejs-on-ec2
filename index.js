@@ -1,14 +1,7 @@
-const https = require('https');
-const fs = require('fs');
+var http = require('http');
 
-const options = {
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
-};
-
-https.createServer(options, function (req, res) {
-  res.writeHead(200);
-  res.end('A Monk in Cloud over HTTPS\n');
-}).listen(443);
-
-console.log('Server running at https://localhost:443/');
+//create a server object:
+http.createServer(function (req, res) {
+  res.write('A Monk in Cloud'); //write a response to the client
+  res.end(); //end the response
+}).listen(80); //the server object listens on port 80
